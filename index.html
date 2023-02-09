@@ -5,26 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./style.css" media="screen" />
+    <script>
+        const b = document.querySelector(".field")
+       function asdf() {
+             console.log('asdfasdf')
+        }
+        document.getElementById("a").innerHTML = "New text!";
+    </script>
     <title>Document</title>
 </head>
 <body>
     <h1> Jogo da Velha</h1>
     <div class="all">
         <form class="row">
-            <input type="button" class="field" height="50%"/>
-            <input type="button" class="field"/>
-            <input type="button" class="field"/>
+            <button type="button" class="field" onclick="asdf()" id="a"></button>
+            <button type="button" class="field"  ></button>
+            <button type="button" class="field" ></button>
         </form>
-        <div class="row">
-            <input type="button" class="field"/>
-            <input type="button" class="field"/>
-            <input type="button" class="field"/>
-        </div>
-        <div class="row">
-            <input type="button" class="field"/>
-            <input type="button" class="field"/>
-            <input type="button" class="field"/>
-        </div>
+        <form class="row">
+            <button type="button" class="field" ></button>
+            <button type="button" class="field" ></button>
+            <button type="button" class="field" ></button>
+        </form>
+        <form class="row">
+            <button type="button" class="field" ></button>
+            <button type="button" class="field" ></button>
+            <button type="button" class="field" ></button>
+        </form>
        
     </div>
 

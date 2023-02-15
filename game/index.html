@@ -11,8 +11,8 @@
         let cond = true;
         let marca
         let jogadas = 0
-        let jogador1, jogador2
-        let jogadorVez
+        var jogador1, jogador2
+        var jogadorVez
 
 
         window.onload = function () {
@@ -90,6 +90,8 @@
             document.getElementById("result").innerHTML = jogadorVez + " venceu!"
 
         }
+        // var favoritemovie = "Shrek";
+sessionStorage.setItem("jogador1", jogador1);
       
     </script>
     <title>Jogo da Velha</title>
@@ -140,7 +142,7 @@
 
         </h1>
         <form action="../php/methods/addResult.php">
-            <input type="submit" title="asdf">
+            <input type="submit" title="reiniciar">
         </form>
     </div>
 

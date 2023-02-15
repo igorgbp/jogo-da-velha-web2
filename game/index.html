@@ -91,12 +91,11 @@
             document.getElementById("jo1").value = jogador1;
             document.getElementById("jo2").value = jogador2;
             document.getElementById("venc").value = jogadorVez;
-            
+            document.getElementById("form_id").submit()
 
         }
         function restart() {
             document.getElementById("resultGame").style.display = "none";
-
         }
 
     </script>
@@ -142,15 +141,15 @@
             </div>
         </div>
     </div>
+    <form action="../php/methods/addResult.php" method="POST" id="form_id">
+        <input id='jo1' name="jo1" class="hd"></input>
+        <input id='jo2' name="jo2" class="hd"></input>
+        <input id='venc' name="venc" class="hd"></input>
+        <!-- <input type="submit" title="asdf" id="reload" onclick="restart()"> -->
+    </form>
     <div id="resultGame" class="winner">
-        <h1 id="result">
-        </h1>
-        <form action="../php/methods/addResult.php" method="POST">
-            <input id = 'jo1' name="jo1" value=""></input>
-            <input id = 'jo2' name="jo2"></input>
-            <input id = 'venc' name="venc"></input>
-            <input type="submit" title="asdf" id="reload" onclick="restart()">
-        </form>
+        <h1 id="result"></h1>
+        <button onclick="reload()">asdf</button>
     </div>
 
 

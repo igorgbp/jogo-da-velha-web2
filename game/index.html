@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./style.css" media="screen" />
+
+    <script>
+        let cond = true;
+        let marca
+        let jogadas = 0
+        let jogador1, jogador2
+        let jogadorVez
+
+
+        window.onload = function () {
+            var url = document.location.href,
+                params = url.split('?')[1].split('&'),
+                data = {}, tmp;
+            for (var i = 0, l = params.length; i < l; i++) {
+                tmp = params[i].split('=');
+                data[tmp[0]] = tmp[1];
+            }
+            // document.getElementById('jogador1').innerHTML = data.jogador1;
+            // document.getElementById('jogador2').innerHTML = data.jogador2;
+            jogador1 = data.jogador1
+            jogador2 = data.jogador2
+            console.log(jogador1, jogador2)
+            document.getElementById('time').innerHTML = jogador1;
+            document.getElementById("resultGame").style.display = "none";
+
+        }
+
+
+
+        function jogada(variavel) {
+            console.log(variavel)
+
+            if (cond) {
+                marca = 'X'
+                document.getElementById('time').innerHTML = jogador2;
+                jogadorVez = jogador1
+            } else {
+                marca = 'O'
+                document.getElementById('time').innerHTML = jogador1;
+                jogadorVez = jogador2
+            }
+            if (document.getElementById(variavel).value == "") {
+                document.getElementById(variavel).value = marca
+                cond = !cond
+                jogadas = jogadas + 1
+            }
+
+            if (jogadas >= 5) venceu(jogadorVez)
+        }
+
+        function venceu() {
+            let arr = []
+            let resultado = 'empate'
+            for (let c = 1; c <= 9; c++) {
+                arr.push(document.getElementById(c).value)
+            }
+            for (let i = 1; i <= 4; i++) {
+                for (let b = 0; b <= 8; b++) {
+                    if (arr[b] != "" && arr[b] === arr[b + i] && arr[b] === arr[b + 2 * i]) {
+                        if (i != 1 && i != 2) { console.log(jogadorVez); resultado = arr[b]; break; }
+                        else {
+                            if (i == 2 && b == 2) { console.log(jogadorVez); resultado = arr[b]; break; }
+                            if (i == 1 && (b == 0 || 3 || 6)) { console.log(jogadorVez); resultado = arr[b]; break; }
+                        }
+
+                    }
+                }
+            }
+            if (resultado != 'empate') result(resultado)
+            else if (jogadas == 9) result(resultado)
+
+        }
+
+        function result() {
+            console.log('func resultado')
+            // console.log(resultado)
+            // console.log($('form').serialize())
+            console.log(jogadorVez)
+
+            document.getElementById("whole").style.display = "none";
+            document.getElementById("resultGame").style.display = "flex";
+            document.getElementById("result").innerHTML = jogadorVez + " venceu!";
+            document.getElementById("jo1").value = jogador1;
+            document.getElementById("jo2").value = jogador2;
+            document.getElementById("venc").value = jogadorVez;
+            
+
+        }
+        function restart() {
+            document.getElementById("resultGame").style.display = "none";
+
+        }
+
+    </script>
+    <title>Jogo da Velha</title>
+</head>
+
+<body>
+    <div class="whole" id="whole">
+        <div class="data">
+            <div class="vez">
+                <p class="info">Jogador da vez:</p>
+                <p id="time" class="namePlayer"></p>
+            </div>
+
+
+            <h1>Resultados</h1>
+            <div>
+                açsdklfjas
+            </div>
+        </div>
+        <div>
+            <h1> Jogo da Velha</h1>
+            <div class="all">
+                <form class="row">
+                    <input type="button" class="field" onclick="jogada(id)" id="1" value=""></input>
+                    <input type="button" class="field" onclick="jogada(id)" id="2" value=""></input>
+                    <input type="button" class="field" onclick="jogada(id)" id="3" value=""></input>
+
+
+                </form>
+                <form class="row">
+                    <input type="button" class="field" onclick="jogada(id)" id="4" value=""></input>
+                    <input type="button" class="field" onclick="jogada(id)" id="5" value=""></input>
+                    <input type="button" class="field" onclick="jogada(id)" id="6" value=""></input>
+                </form>
+                <form class="row">
+                    <input type="button" class="field" onclick="jogada(id)" id="7" value=""></input>
+                    <input type="button" class="field" onclick="jogada(id)" id="8" value=""></input>
+                    <input type="button" class="field" onclick="jogada(id)" id="9" value=""></input>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <div id="resultGame" class="winner">
+        <h1 id="result">
+        </h1>
+        <form action="../php/methods/addResult.php" method="POST">
+            <input id = 'jo1' name="jo1" value=""></input>
+            <input id = 'jo2' name="jo2"></input>
+            <input id = 'venc' name="venc"></input>
+            <input type="submit" title="asdf" id="reload" onclick="restart()">
+        </form>
+    </div>
+
+
+
+</body>
+
+</html>

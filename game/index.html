@@ -30,14 +30,16 @@
             console.log(jogador1, jogador2)
             document.getElementById('time').innerHTML = jogador1;
             document.getElementById("resultGame").style.display = "none";
-            
-        }
-        
+            document.getElementById("form_id").style.display = "none";
 
-        
+
+        }
+
+
+
         function jogada(variavel) {
             console.log(variavel)
-            
+
             if (cond) {
                 marca = 'X'
                 document.getElementById('time').innerHTML = jogador2;
@@ -52,7 +54,7 @@
                 cond = !cond
                 jogadas = jogadas + 1
             }
-           
+
             if (jogadas >= 5) venceu(jogadorVez)
         }
 
@@ -78,42 +80,42 @@
             else if (jogadas == 9) result(resultado)
 
         }
-  
+
         function result() {
             console.log('func resultado')
             // console.log(resultado)
             // console.log($('form').serialize())
             console.log(jogadorVez)
-            
+
             document.getElementById("whole").style.display = "none";
             document.getElementById("resultGame").style.display = "flex";
             document.getElementById("result").innerHTML = jogadorVez + " venceu!"
+            document.getElementById("jo1").value = jogador1;
+            document.getElementById("jo2").value = jogador2;
+            document.getElementById("venc").value = jogadorVez;
+            setTimeout(() => document.getElementById("form_id").submit(), 3000)
+            // document.getElementById("form_id").submit()
+
 
         }
         // var favoritemovie = "Shrek";
-sessionStorage.setItem("jogador1", jogador1);
-      
+        sessionStorage.setItem("jogador1", jogador1);
+
     </script>
     <title>Jogo da Velha</title>
 </head>
 
 <body>
-    <div class="whole" id = "whole">
-        <div class="data">
-            <div class="vez">
-                <p class="info">Jogador da vez:</p> 
-                <p id="time" class="namePlayer"></p>
-            </div>
-            
+    <div class="whole" id="whole">
+       
 
-            <h1>Resultados</h1>
-            <div>
-                açsdklfjas
-            </div>
-        </div>
         <div>
-            <h1> Jogo da Velha</h1>
+            <div class="vez">
+                <p class="info">Jogador da vez:<p id="time" class="namePlayer"></p></p>
+                
+            </div>
             <div class="all">
+                
                 <form class="row">
                     <input type="button" class="field" onclick="jogada(id)" id="1" value=""></input>
                     <input type="button" class="field" onclick="jogada(id)" id="2" value=""></input>
@@ -136,14 +138,17 @@ sessionStorage.setItem("jogador1", jogador1);
             </div>
         </div>
     </div>
-    <div id = "resultGame" class="winner">
-        <h1 id="result">
-           
+    <form action="../php/methods/addResult.php" method="POST" id="form_id">
+        <input id='jo1' name="jo1" class="hd"></input>
+        <input id='jo2' name="jo2" class="hd"></input>
+        <input id='venc' name="venc" class="hd"></input>
+        <!-- <input type="submit" title="asdf" id="reload" onclick="restart()"> -->
+    </form>
+    <div id="resultGame" class="winner">
+        <h1 id="result"></h1>
+    </div>
 
-        </h1>
-        <form action="../php/methods/addResult.php">
-            <input type="submit" title="reiniciar">
-        </form>
+
     </div>
 
 

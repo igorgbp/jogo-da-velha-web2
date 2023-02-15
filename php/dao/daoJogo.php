@@ -13,4 +13,11 @@ class DaoJogo
             return false;
         }
     }
+    public function listGames () {
+        $list = [];
+        $pst = Conexao::getPreparedStatement('select * from jogo');
+        $pst ->execute();
+        $list = $pst -> fetchAll(PDO::FETCH_ASSOC);
+        return $list;
+    }
 }

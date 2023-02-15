@@ -2,7 +2,6 @@ body {
     background-color: rgb(52, 58, 53);
     justify-content: center;
     display: flex;
-    border: 2px solid red;
     align-items: center;
     flex-direction: column;
     height: 600px;
@@ -22,7 +21,6 @@ body {
     padding: 20px;
     border-radius: 20px;
     height: 500px;
-    border: 2px solid rgb(4, 0, 255);
     align-items: center;
     justify-content: center;
 
@@ -37,7 +35,6 @@ body {
   }
 
   .row {
-    border: 2px solid red;
     height: 30%;
     flex-direction: row;
     width: 100%;
